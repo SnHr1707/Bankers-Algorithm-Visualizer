@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Banker's Algorithm Simulator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Banker's Algorithm Simulator</h1>
+
+
+        <div id="setupSection" class="card setup-card">
+            <h2>1. System Setup</h2>
+            <div class="input-group">
+                <label for="numProcess">Number of Processes (P):</label>
+                <input type="number" id="numProcess" min="1">
+            </div>
+            <div class="input-group">
+                <label for="numResource">Number of Resources (R):</label>
+                <input type="number" id="numResource" min="1">
+            </div>
+            <div class="button-group setup-buttons">
+                <button id="createTables" onclick="createTables()">Create Input Tables</button>
+                <button id="reset" onclick="reset()">Reset All</button>
+            </div>
+        </div>
+
+
+
+        <div id="tablesDisplayArea" class="tables-display-grid">
+            <div id="mainTableContainer" class="main-table-area">
+
+            </div>
+            <div id="sideTablesContainer" class="side-tables-area">
+
+            </div>
+        </div>
+
+
+
+        <div id="controlButtons" class="button-group main-controls">
+            <button id="findNeed" onclick="findNeed()" disabled>2. Calculate Need(Maximum - Allocated)</button>
+            <button id="findAvailable" onclick="findAvailable()" disabled>3. Calculate Available(Total Resources - Total Available)</button>
+            <button id="safeSequence" onclick="generateSafeSeq()" disabled>4. Check Initial Safety</button>
+        </div>
+
+
+        <div id="speedControl" class="speed-control card" style="visibility: hidden;">
+            <label for="speedSlider">Visualization Speed:</label>
+            <input type="range" id="speedSlider" min="1" max="100" value="50" oninput="updateSpeed()">
+            <span id="speedValue">Medium</span>
+        </div>
+
+
+        <div id="resultsArea" class="card results-card full-width-card" style="visibility: hidden;">
+            <h2>Initial Safety Check Log</h2>
+            <div id="safetyCheckSteps" class="log-steps detailed-log">
+
+            </div>
+            <div id="finalResult" class="final-result-style">
+
+            </div>
+        </div>
+
+
+        <div id="resourceRequestSection" class="card request-card full-width-card" style="visibility: hidden;">
+
+            <h2>5. Resource Request & Check</h2>
+            <div id="resourceRequestPart">
+                <div class="input-group">
+                    <label for="requestProcess">Requesting Process (P#):</label>
+                    <input type="number" id="requestProcess" min="0">
+                </div>
+            </div>
+            <div id="makeResourceRequest" class="request-table-area">
+
+            </div>
+            <div id="requestButtons" class="button-group request-actions">
+                <button id="checkSafety" onclick="checkSafeState()" disabled>Check Request Safety</button>
+                <button id="resourceRequest" onclick="resourceRequest()" disabled>Make New Request Setup</button>
+            </div>
+            <div id="requestLogSteps" class="log-steps detailed-log">
+
+            </div>
+            <div id="requestFinalResult" class="final-result-style">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
